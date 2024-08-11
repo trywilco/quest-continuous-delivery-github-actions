@@ -1,0 +1,100 @@
+id: automate_deployment
+learningObjectives:
+  - Automate the deployment processes
+hints:
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Now, let's automate the deployment processes, for this we will create a new workflow file.
+          - text: "Create a new file called `deploy.yml` in the `.github/workflows` directory."
+          - text: "Add the following content to it:"
+          - text: |
+              ```
+              name: Deploy to Azure
+              on:
+                push:
+                  branches:
+                    - 'main'
+
+              jobs:
+                deploy:
+                  name: Deployment
+                  runs-on: ubuntu-20.04
+                  steps:
+                  - name: Checkout
+                    uses: actions/checkout@v3
+              
+                  - name: Set the app name
+                    run: echo "AZURE_APP_NAME=${REPO_NAME,,}" >>${GITHUB_ENV}
+                    env:
+                      REPO_NAME: '${{ github.event.repository.name }}'
+               
+                  - name: Log in to Azure CLI
+                    uses: azure/login@v1
+                    with:
+                      creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+                  - name: Deploy to Azure
+                    run: |
+                      az containerapp up -n $AZURE_APP_NAME --ingress external --source .
+              ```
+          - text: Once you're done, open a pull request and I'll review it.
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    switch:
+      key: ${eventType}
+      cases:
+        github_pr_opened:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Checking now
+            - actionId: github_pr_comment
+              params:
+                person: lucca
+                message: Checking now.
+        github_pr_workflow_complete_success:
+          if:
+            conditions:
+              - conditionId: github_does_file_contain
+                params:
+                  fileName: .github/workflows/deploy.yml
+                  regex: az containerapp
+              - conditionId: github_does_file_contain
+                params:
+                  fileName: .github/workflows/deploy.yml
+                  regex: "-\\\\s*'main'"
+
+            then:
+              do:
+                - actionId: bot_message
+                  params:
+                    person: lucca
+                    messages:
+                      - text: Looking good! You can merge the PR now.
+                - actionId: github_pr_approve
+                  params:
+                    person: lucca
+                    message: Looking good! You can merge the PR now.
+            else:
+              do:
+                - actionId: bot_message
+                  params:
+                    person: lucca
+                    messages:
+                      - text: Looks like you did not update the `deploy.yml` file correctly. Remember to add the
+                          relevant content.
+                - actionId: github_pr_reject
+                  params:
+                    person: lucca
+                    message: Looks like you did not update the `deploy.yml` file correctly. Remember to add the
+                      relevant content.
+        github_pr_merged:
+          do:
+            - actionId: finish_step

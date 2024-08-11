@@ -1,0 +1,40 @@
+id: continuous_delivery_github_actions
+title: Mastering Continuous Delivery with GitHub Actions
+subtitle: Streamline your deployment with GitHub Actions
+description: In this quest, you'll learn the essentials of continuous delivery
+  and how to set up CI/CD pipelines using GitHub Actions. You'll automate
+  testing and deployment processes, explore advanced CD techniques like
+  blue-green deployments and canary releases, and monitor and optimize your CD
+  pipelines for efficiency.
+summary: Well done! In this quest, you learned the essentials of continuous
+  delivery, set up CI/CD pipelines using GitHub Actions, automated testing and
+  deployment processes, explored advanced CD techniques like blue-green
+  deployments and canary releases, and monitored and optimized your CD pipelines
+  for efficiency.
+level: intermediate
+type: REPOSITORY
+duration: 3
+questDependency: null
+repository: https://github.com/trywilco/copilot-node-calculator
+
+steps:
+  - introduction_to_ci_cd
+  - setup_github_actions
+  - automate_deployment
+  - verify_app_deployment
+  - change_code
+  - verify_code_change
+skills:
+  - devops
+  - ci/cd
+  - github_actions
+  - automation
+  - deployment
+messages:
+  questFinished:
+    person: lucca
+    messages:
+      - text: Amazing job, now your application is fully set up with a CI/CD pipeline
+          using GitHub Actions!
+frameworks:
+  backend: null

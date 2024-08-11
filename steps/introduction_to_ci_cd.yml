@@ -1,0 +1,33 @@
+id: introduction_to_ci_cd
+learningObjectives:
+  - Understand the importance of continuous delivery
+hints:
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Hi there! Lucca here. Welcome to the wonderful world of Continuous Integration and Continuous Delivery (CI/CD).
+          - text: We created a new Codespace development environment for you to use, equipped with everything you need, [let's open it](${platform.baseUrl}/my-codespace) or click on the link from your Wilco Chat side menu.
+          - text: Now, let's dive into CI/CD and its importance.
+          - text: Continous Integration (CI) is a software development practice where code changes are automatically tested and integrated into a shared repository.
+          - text: Continuous delivery (CD) is a software development practice where code changes
+              are automatically prepared for a release to production.
+          - text: It allows for faster and more reliable software releases, reducing the
+              risk of errors and improving overall efficiency.
+          - text: Github Actions is a powerful tool that can help you automate your this process.
+          - text: Let's move on.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Awesome! Let's proceed to setting up CI/CD pipelines with GitHub Actions.
+      - actionId: finish_step

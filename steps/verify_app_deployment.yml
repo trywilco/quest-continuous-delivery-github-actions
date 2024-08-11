@@ -1,0 +1,39 @@
+id: verify_app_deployment
+learningObjectives:
+  - Analyze GitHub Actions log
+hints:
+  - Check the Actions logs for urls.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Now that your pull request is merged, you can go to the [Actions tab](${user.repository}/actions/workflows/deploy.yml), click on the in progress job and view the deployment progress.
+          - text: Once the job is complete (it can take couple of minutes), you should see app URL in the Actions job logs under the "Deployment to Azure" step.
+          - text: To verify everything works as expected, :instruction[paste the URL from the logs here].
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: anythink-market.*azurecontainerapps\.io
+            flags: i
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: You found it!
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Try again! I'm sure you'll figure this out.

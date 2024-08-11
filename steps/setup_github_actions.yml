@@ -1,0 +1,88 @@
+id: setup_github_actions
+learningObjectives:
+  - Set up CI pipeline with GitHub Actions
+hints:
+  - Make sure you created a yml file under the `.github/workflows` directory.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Let's start with the CI (Continuous Integration) part by making our GitHub Actions run on every pull request."
+          - text: "In each pull request, we'll install dependencies and run our tests"
+          - text: So, to make it happen, :instruction[create a new file in a new `.github/workflows` directory called `ci.yml`].
+          - text: "Add the following content to the file to set up a basic CI pipeline:"
+          - text: |-
+              ```yaml
+              name: CI Pipeline
+
+              on: [pull_request]
+
+              jobs:
+                build:
+                  runs-on: ubuntu-latest
+                  steps:
+                  - uses: actions/checkout@v2
+                  - name: Set up Node.js
+                    uses: actions/setup-node@v2
+                    with:
+                      node-version: '18'
+                  - name: Install dependencies
+                    run: npm install
+                  - name: Run tests
+                    run: npm test
+              ```
+          - text: Once you're done, open a pull request and you should see your action running. I'll be here to review it.
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    switch:
+      key: ${eventType}
+      cases:
+        github_pr_opened:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Checking now
+            - actionId: github_pr_comment
+              params:
+                person: lucca
+                message: Checking now.
+        github_pr_workflow_complete_success:
+          if:
+            conditions:
+              - conditionId: github_does_file_contain
+                params:
+                  fileName: .github/workflows/ci.yml
+                  regex: "run:\\\\s*npm test"
+
+            then:
+              do:
+                - actionId: bot_message
+                  params:
+                    person: lucca
+                    messages:
+                      - text: Looking good! You can merge the PR now.
+                - actionId: github_pr_approve
+                  params:
+                    person: lucca
+                    message: Looking good! You can merge the PR now.
+            else:
+              do:
+                - actionId: bot_message
+                  params:
+                    person: lucca
+                    messages:
+                      - text: Looks like you did not update the `ci.yml` file. Remember to add the
+                          relevant content.
+                - actionId: github_pr_reject
+                  params:
+                    person: lucca
+                    message: Looks like you did not update the `ci.yml` file. Remember to add the
+                      relevant content.
+        github_pr_merged:
+          do:
+            - actionId: finish_step

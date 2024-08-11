@@ -1,0 +1,66 @@
+id: change_code
+learningObjectives:
+  - Change code and see the changes reflected in the application.
+hints:
+  - Make sure you created a yml file under the `.github/workflows` directory.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Now that you have created the CI/CD pipeline, let's make a change to the code and see the pipeline in action."
+          - text: "We will make a small change to the style, let's change the background color of calculator results bar."
+          - text:  "So, :instruction[open the `public/default.css` file and change the **`#result`** CSS selector `background-color` to `#5362e0`]"
+          - text: Once you're done, open a pull request and you should see your action running. I'll be here to review it.
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    switch:
+      key: ${eventType}
+      cases:
+        github_pr_opened:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Checking now
+            - actionId: github_pr_comment
+              params:
+                person: lucca
+                message: Checking now.
+        github_pr_workflow_complete_success:
+          if:
+            conditions:
+              - conditionId: github_does_file_contain
+                params:
+                  fileName: public/default.css
+                  regex: "background-color: #5362e0"
+            then:
+              do:
+                - actionId: bot_message
+                  params:
+                    person: lucca
+                    messages:
+                      - text: Looking good! You can merge the PR now.
+                - actionId: github_pr_approve
+                  params:
+                    person: lucca
+                    message: Looking good! You can merge the PR now.
+            else:
+              do:
+                - actionId: bot_message
+                  params:
+                    person: lucca
+                    messages:
+                      - text: Looks like you did not update the `ci.yml` file. Remember to add the
+                          relevant content.
+                - actionId: github_pr_reject
+                  params:
+                    person: lucca
+                    message: Looks like you did not update the `ci.yml` file. Remember to add the
+                      relevant content.
+        github_pr_merged:
+          do:
+            - actionId: finish_step
