@@ -8,7 +8,7 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: Now that you have made changes to the code, let's actually see it.
+          - text: Now that you have changed the code, let's see it.
           - text: Keep an eye on the [GitHub Actions workflow](${user.repository}/actions/workflows/deploy.yml), to see when the deployment is finished.
           - text: Once the deployment is finished, go to the same URL from before and see the background color change.
           - text: Let me know when you are ready to continue.
