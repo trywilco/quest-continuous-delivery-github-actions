@@ -39,7 +39,7 @@ startFlow:
 
                   - name: Deploy to Azure
                     run: |
-                      az containerapp up -n $AZURE_APP_NAME --ingress external --source .
+                      az containerapp up -n $AZURE_APP_NAME --ingress external --target-port 3000 --source .
               ```
           - text: Once you're done, open a pull request and I'll review it.
 trigger:
