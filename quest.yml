@@ -12,7 +12,6 @@ summary: Well done! In this quest, you learned the essentials of continuous
   deployments and canary releases, and monitored and optimized your CD pipelines
   for efficiency.
 level: intermediate
-type: REPOSITORY
 duration: 3
 questDependency: null
 repository: https://github.com/trywilco/copilot-node-calculator
