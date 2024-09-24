@@ -34,6 +34,7 @@ startFlow:
                     run: npm test
               ```
           - text: Once you're done, open a pull request and you should see your action running. I'll be here to review it.
+          - text: "Before you start, **make sure to create a new branch for your changes**. This helps keep your work organized and makes it easier to manage pull requests."
 trigger:
   type: github_pr_lifecycle_status
   flowNode:

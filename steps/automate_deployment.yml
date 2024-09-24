@@ -9,7 +9,7 @@ startFlow:
         person: lucca
         messages:
           - text: Now, let's automate the deployment processes, for this we will create a new workflow file.
-          - text: "Create a new file called `deploy.yml` in the `.github/workflows` directory."
+          - text: "Create a new branch and there, create a file called `deploy.yml` in the `.github/workflows` directory."
           - text: "Add the following content to it:"
           - text: |
               ```
