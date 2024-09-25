@@ -10,7 +10,7 @@ startFlow:
         person: lucca
         messages:
           - text: Now that your pull request is merged, you can go to the [Actions tab](${user.repository}/actions/workflows/deploy.yml), click on the "In Progress" job, and view the deployment progress.
-          - text: Once the job is complete (it can take a few minutes), you should see the app URL in the Actions job logs under the "Deployment to Azure" step.
+          - text: Once the job is complete (it can take a few minutes), you should see the app URL in the Actions job logs under the "Deploy in Azure" step.
           - text: To verify everything works as expected, :instruction[paste the URL from the logs here].
 trigger:
   type: user_message

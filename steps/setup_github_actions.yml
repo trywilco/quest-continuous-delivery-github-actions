@@ -11,7 +11,7 @@ startFlow:
         messages:
           - text: "Let's start with the CI (Continuous Integration) part by making our GitHub Actions run on every pull request."
           - text: "In each pull request, we'll install dependencies and run our tests"
-          - text: So, to make it happen, :instruction[create a new file in a new `.github/workflows` directory called `ci.yml`].
+          - text: So, to make it happen, :instruction[create a new file in a new directory `.github/workflows` and a file `ci.yml` in it].
           - text: "Add the following content to the file to set up a basic CI pipeline:"
           - text: |-
               ```yaml
