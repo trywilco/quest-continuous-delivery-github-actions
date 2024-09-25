@@ -1,6 +1,6 @@
 id: automate_deployment
 learningObjectives:
-  - Automate the deployment processes
+  - Automate the deployment process
 hints:
 startFlow:
   do:
@@ -8,8 +8,8 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: Now, let's automate the deployment processes, for this we will create a new workflow file.
-          - text: "Create a new branch and there, create a file called `deploy.yml` in the `.github/workflows` directory."
+          - text: Now, let's automate the deployment process. We will create a new workflow file.
+          - text: "Create a new branch and in it, create a file called `deploy.yml` in the `.github/workflows` directory."
           - text: "Add the following content to it:"
           - text: |
               ```
@@ -26,7 +26,7 @@ startFlow:
                   steps:
                   - name: Checkout
                     uses: actions/checkout@v3
-              
+
                   - name: Set the app name
                     run: echo "AZURE_APP_NAME=${REPO_NAME,,}" >>${GITHUB_ENV}
                     env:
@@ -54,7 +54,7 @@ trigger:
               params:
                 person: lucca
                 messages:
-                  - text: Checking now
+                  - text: Checking now.
             - actionId: github_pr_comment
               params:
                 person: lucca
@@ -88,12 +88,14 @@ trigger:
                   params:
                     person: lucca
                     messages:
-                      - text: Looks like you did not update the `deploy.yml` file correctly. Remember to add the
+                      - text:
+                          It looks like you did not update the `deploy.yml` file correctly. Remember to add the
                           relevant content.
                 - actionId: github_pr_reject
                   params:
                     person: lucca
-                    message: Looks like you did not update the `deploy.yml` file correctly. Remember to add the
+                    message:
+                      It looks like you did not update the `deploy.yml` file correctly. Remember to add the
                       relevant content.
         github_pr_merged:
           do:

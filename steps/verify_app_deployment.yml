@@ -1,6 +1,6 @@
 id: verify_app_deployment
 learningObjectives:
-  - Analyze GitHub Actions log
+  - Analyze GitHub Actions logs
 hints:
   - Check the Actions logs for URLs.
 startFlow:
@@ -36,4 +36,4 @@ trigger:
             params:
               person: lucca
               messages:
-                - text: Try again! I'm sure you'll figure this out.
+                - text: Try again! I'm sure you'll figure it out.

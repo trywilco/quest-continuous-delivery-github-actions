@@ -1,8 +1,8 @@
 id: setup_github_actions
 learningObjectives:
-  - Set up CI pipeline with GitHub Actions
+  - Set up a CI pipeline with GitHub Actions
 hints:
-  - Make sure you created a yml file under the `.github/workflows` directory.
+  - Make sure you create a YAML file under the `.github/workflows` directory.
 startFlow:
   do:
     - actionId: bot_message
@@ -10,7 +10,7 @@ startFlow:
         person: lucca
         messages:
           - text: "Let's start with the CI (Continuous Integration) part by making our GitHub Actions run on every pull request."
-          - text: "In each pull request, we'll install dependencies and run our tests"
+          - text: "In each pull request, we'll install dependencies and run our tests."
           - text: So, to make it happen, :instruction[create a new file in a new directory `.github/workflows` and a file `ci.yml` in it].
           - text: "Add the following content to the file to set up a basic CI pipeline:"
           - text: |-
@@ -47,7 +47,7 @@ trigger:
               params:
                 person: lucca
                 messages:
-                  - text: Checking now
+                  - text: Checking now.
             - actionId: github_pr_comment
               params:
                 person: lucca
@@ -77,13 +77,11 @@ trigger:
                   params:
                     person: lucca
                     messages:
-                      - text: Looks like you did not update the `ci.yml` file. Remember to add the
-                          relevant content.
+                      - text: It looks like you did not update the `ci.yml` file. Remember to add the relevant content.
                 - actionId: github_pr_reject
                   params:
                     person: lucca
-                    message: Looks like you did not update the `ci.yml` file. Remember to add the
-                      relevant content.
+                    message: It looks like you did not update the `ci.yml` file. Remember to add the relevant content.
         github_pr_merged:
           do:
             - actionId: finish_step
