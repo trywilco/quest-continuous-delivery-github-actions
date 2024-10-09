@@ -18,6 +18,7 @@ repository: https://github.com/trywilco/copilot-node-calculator
 
 steps:
   - introduction_to_ci_cd
+  - create_new_branch
   - setup_github_actions
   - automate_deployment
   - verify_app_deployment

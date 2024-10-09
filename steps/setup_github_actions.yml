@@ -33,7 +33,7 @@ startFlow:
                   - name: Run tests
                     run: npm test
               ```
-          - text: Once you're done, :instruction[create a new branch and open a PR with your changes and I'll review it].
+          - text: Once you're done, :instruction[If you havent done so already, create a new branch and open a PR with your changes and I'll review it].
 trigger:
   type: github_pr_lifecycle_status
   flowNode:
