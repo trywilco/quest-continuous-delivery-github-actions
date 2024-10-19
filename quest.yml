@@ -1,5 +1,5 @@
 id: continuous_delivery_github_actions
-title: Mastering Continuous Delivery with GitHub Actions
+title: Mastering continuous delivery with GitHub Actions
 subtitle: Streamline your deployment with GitHub Actions
 description: In this quest, you'll learn the essentials of continuous delivery
   and how to set up CI/CD pipelines using GitHub Actions. You'll automate
