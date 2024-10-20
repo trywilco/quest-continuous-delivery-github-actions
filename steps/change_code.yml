@@ -12,7 +12,7 @@ startFlow:
           - text: "Now that you have created the CI/CD pipeline, let's make a change to the code and see the pipeline in action."
           - text: "We will make a small change to the style. Let's change the background color of the calculator results bar."
           - text: "So, :instruction[open the `public/default.css` file and change the **`#result`** CSS selector `background-color` to `#5362e0`]"
-          - text: Once you're done, :instruction[create a new branch and open a PR with your changes, and I'll review it].
+          - text: Once you're done, :instruction[create a new branch, commit your changes and open a PR, and I'll review it].
 trigger:
   type: github_pr_lifecycle_status
   flowNode:
