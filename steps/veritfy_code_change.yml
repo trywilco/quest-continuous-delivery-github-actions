@@ -23,5 +23,10 @@ trigger:
         params:
           person: lucca
           messages:
-            - text: Awesome! You did it.
+            - text: "Awesome! You did it."
+            - text: "You've just completed the Mastering Continuous Delivery with GitHub Actions quest—great job! In this quest, you set up automated build and deployment workflows using GitHub Actions, enabling continuous delivery of your application."
+            - text: "Next, to strengthen your skills and apply them more confidently, here's a personalized learning path:"
+            - text: "👉 GitHub Skills: [Deploy to Azure](https://github.com/skills/deploy-to-azure) — practice the next logical GitHub skill."
+            - text: "👉 Microsoft Learn: [Build and deploy applications to Azure by using GitHub Actions](https://learn.microsoft.com/en-us/training/modules/github-actions-cd/) — deepen your conceptual understanding."
+            - text: "👉 Microsoft Applied Skills: [GitHub Actions Certification Exam](https://learn.microsoft.com/en-us/credentials/certifications/github-actions/) — earn a credential that shows what you've learned."
       - actionId: finish_step
