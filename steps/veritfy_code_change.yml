@@ -24,9 +24,9 @@ trigger:
           person: lucca
           messages:
             - text: "Awesome! You did it."
-            - text: "You've just completed the Mastering Continuous Delivery with GitHub Actions quest—great job! In this quest, you set up automated build and deployment workflows using GitHub Actions, enabling continuous delivery of your application."
-            - text: "Next, to strengthen your skills and apply them more confidently, here's a personalized learning path:"
-            - text: "👉 GitHub Skills: [Deploy to Azure](https://github.com/skills/deploy-to-azure) — practice the next logical GitHub skill."
-            - text: "👉 Microsoft Learn: [Build and deploy applications to Azure by using GitHub Actions](https://learn.microsoft.com/en-us/training/modules/github-actions-cd/) — deepen your conceptual understanding."
-            - text: "👉 Microsoft Applied Skills: [GitHub Actions Certification Exam](https://learn.microsoft.com/en-us/credentials/certifications/github-actions/) — earn a credential that shows what you've learned."
+            - text: "You've just completed the Mastering Continuous Delivery with GitHub Actions quest—great job! This experience helped you set up automated build and deployment workflows, empowering you to achieve continuous delivery with GitHub Actions."
+            - text: "🧠 What's Next?"
+            - text: "To strengthen your skills and validate your expertise, pursue the official:"
+            - text: "[👉 GitHub Actions Certification](https://learn.microsoft.com/en-us/credentials/certifications/github-actions/?practice-assessment-type=certification&wt.mc_id=continuousdelivery_wilcocontinuousdelivery_webpage_cnl)"
+            - text: "Earn a verified credential from GitHub that demonstrates your ability to implement GitHub Actions in real-world CI/CD workflows. This certification page provides direct access to the required learning paths, skills modules, and the certification exam." 
       - actionId: finish_step
